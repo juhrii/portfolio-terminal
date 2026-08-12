@@ -9,13 +9,13 @@ interface HistoryLine {
 }
 
 const ASCII_ART = `
-   _____       _  __           ___         
-  / ___/____ _(_)/ /__  __  __/ (_)___     
-  \\__ \\/ __ \`/ / / __ \\/ / / / / / __ \\    
- ___/ / /_/ / / / / / / /_/ / / / / / /    
-/____/\\__,_/_/_/_/ /_/\\__,_/_/_/_/ /_/     
+    ___    ____  ____  __  ________
+   /   |  / __ )/ __ \\/ / / /_  __/
+  / /| | / __  / / / / / / / / /   
+ / ___ |/ /_/ / /_/ / /_/ / / /    
+/_/  |_/_____/\\____/\\____/ /_/     
                                          
-          J U H R I   V 1.0              
+    S A I F U D I N   J U H R I   V 1.0  
 
 -----------------------------------------
 OS: Next.js/React (Web)
@@ -34,12 +34,14 @@ export default function Home() {
       id: 0,
       type: "output",
       content: (
-        <div className="whitespace-pre-wrap text-green-500 mb-4">
-          {ASCII_ART}
-          <br />
-          Welcome to Saifudin Juhri's Interactive Terminal.
-          <br />
-          Type <span className="text-white font-bold">'help'</span> to see available commands.
+        <div className="flex flex-col items-center w-full mb-8 mt-10">
+          <div className="whitespace-pre text-green-500 mb-4 text-center">
+            {ASCII_ART}
+          </div>
+          <div className="text-center text-green-500">
+            Welcome to Saifudin Juhri's Interactive Terminal.<br/>
+            Type <span className="text-white font-bold">'help'</span> to see available commands.
+          </div>
         </div>
       ),
     },
@@ -140,7 +142,7 @@ export default function Home() {
           <div className="ml-4 mt-2 mb-4 space-y-1">
             <p>Email: <a href="mailto:hello@example.com" className="text-blue-400 hover:underline">hello@example.com</a></p>
             <p>GitHub: <a href="https://github.com/juhrii" target="_blank" className="text-blue-400 hover:underline">github.com/juhrii</a></p>
-            <p>Instagram: <a href="https://instagram.com/guest" target="_blank" className="text-blue-400 hover:underline">@guest</a></p>
+            <p>Instagram: -</p>
             <p>WhatsApp: <a href="https://wa.me/6281234567890" target="_blank" className="text-blue-400 hover:underline">+62 812 3456 7890</a></p>
           </div>
         );
@@ -160,7 +162,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-8 w-full max-w-4xl mx-auto flex flex-col font-mono text-sm md:text-base crt glow">
+    <main className="min-h-screen p-4 md:p-8 w-full max-w-2xl mx-auto flex flex-col font-mono text-sm md:text-base crt glow">
       <div className="flex-1 pb-10 relative">
         {history.map((line) => (
           <div key={line.id} className={line.type === "command" ? "font-bold text-white mt-4" : ""}>
