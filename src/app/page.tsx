@@ -16,6 +16,16 @@ const ASCII_ART = `
 /____/\\__,_/_/_/_/ /_/\\__,_/_/_/_/ /_/     
                                          
           J U H R I   V 1.0              
+
+-----------------------------------------
+OS: Next.js/React (Web)
+Host: Universal Big Data (UBIG) Intern
+Kernel: Frontend & Mobile Dev
+Uptime: 24/7 Available
+Packages: Flutter, React Native, Laravel
+Shell: Retro Bash
+Terminal: Portofolio
+-----------------------------------------
 `;
 
 export default function Home() {
@@ -150,8 +160,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-8 w-full max-w-4xl mx-auto flex flex-col font-mono text-sm md:text-base">
-      <div className="flex-1">
+    <main className="min-h-screen p-4 md:p-8 w-full max-w-4xl mx-auto flex flex-col font-mono text-sm md:text-base crt glow">
+      <div className="flex-1 pb-10 relative">
         {history.map((line) => (
           <div key={line.id} className={line.type === "command" ? "font-bold text-white mt-4" : ""}>
             {line.content}
@@ -166,18 +176,23 @@ export default function Home() {
               handleCommand(input);
               setInput("");
             }}
-            className="flex-1"
+            className="flex-1 flex items-center relative"
           >
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="w-full bg-transparent outline-none border-none text-green-500 font-mono caret-white"
+              className="w-full bg-transparent outline-none border-none text-transparent font-mono caret-transparent absolute inset-0 z-10"
               autoComplete="off"
               spellCheck="false"
               autoFocus
             />
+            {/* Custom Block Cursor */}
+            <span className="text-green-500 whitespace-pre">
+              {input}
+              <span className="blink inline-block w-[0.6em] h-[1.1em] bg-green-500 align-middle ml-[1px]"></span>
+            </span>
           </form>
         </div>
         <div ref={endRef} className="h-10" />
