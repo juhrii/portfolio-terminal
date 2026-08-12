@@ -40,44 +40,61 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background-color: #0a0a0a; /* Deep obsidian */
+  color: #e5e5e5;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
+  background-image: radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.05), transparent 25%),
+                    radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.08), transparent 25%);
 }
 
-/* Retro Terminal Effects */
-.crt::before {
-  content: " ";
-  display: block;
+/* Glassmorphism Panel Utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 1.5rem;
+}
+
+/* Gold Text Gradient */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FFDF00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ambient Glowing Orbs */
+.ambient-orb {
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(
-      rgba(18, 16, 16, 0) 50%, 
-      rgba(0, 0, 0, 0.25) 50%
-    ), 
-    linear-gradient(
-      90deg, 
-      rgba(255, 0, 0, 0.06), 
-      rgba(0, 255, 0, 0.02), 
-      rgba(0, 0, 255, 0.06)
-    );
-  z-index: 50;
-  background-size: 100% 3px, 3px 100%;
-  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.4;
+  animation: float 20s infinite ease-in-out alternate;
 }
 
-.glow {
-  text-shadow: 0 0 4px rgba(34, 197, 94, 0.5), 0 0 8px rgba(34, 197, 94, 0.3);
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(212, 175, 55, 0.15); /* Gold */
+  top: -100px;
+  left: -100px;
 }
 
-.blink {
-  animation: blinker 1s step-start infinite;
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: rgba(184, 134, 11, 0.1); /* Dark Goldenrod */
+  bottom: -200px;
+  right: -100px;
+  animation-delay: -5s;
 }
 
-@keyframes blinker {
-  50% { opacity: 0; }
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 30px) scale(1.05); }
+  100% { transform: translate(-30px, 50px) scale(0.95); }
 }
