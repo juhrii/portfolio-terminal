@@ -140,7 +140,7 @@ export default function Home() {
           <div className="ml-4 mt-2 mb-4 space-y-1">
             <p>Email: <a href="mailto:hello@example.com" className="text-blue-400 hover:underline">hello@example.com</a></p>
             <p>GitHub: <a href="https://github.com/juhrii" target="_blank" className="text-blue-400 hover:underline">github.com/juhrii</a></p>
-            <p>Instagram: <a href="https://instagram.com/jubhanjirr" target="_blank" className="text-blue-400 hover:underline">@jubhanjirr</a></p>
+            <p>Instagram: <a href="https://instagram.com/guest" target="_blank" className="text-blue-400 hover:underline">@guest</a></p>
             <p>WhatsApp: <a href="https://wa.me/6281234567890" target="_blank" className="text-blue-400 hover:underline">+62 812 3456 7890</a></p>
           </div>
         );
