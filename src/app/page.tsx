@@ -146,7 +146,7 @@ export default function Home() {
             <p>Email: <a href="mailto:hello@example.com" className="text-blue-400 hover:underline">hello@example.com</a></p>
             <p>GitHub: <a href="https://github.com/juhrii" target="_blank" className="text-blue-400 hover:underline">github.com/juhrii</a></p>
             <p>Instagram: -</p>
-            <p>WhatsApp: <a href="https://wa.me/6281234567890" target="_blank" className="text-blue-400 hover:underline">+62 812 3456 7890</a></p>
+            <p>WhatsApp: <a href="https://wa.me/6281325145566" target="_blank" className="text-blue-400 hover:underline">+62 813-2514-5566</a></p>
           </div>
         );
         break;
