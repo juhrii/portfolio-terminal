@@ -2,40 +2,61 @@
 
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/navbar";
+import { supabase } from "@/lib/supabase";
 
 export default function Guestbook() {
-  const [messages, setMessages] = useState<{id: number, name: string, text: string, date: string}[]>([]);
-
+  const [messages, setMessages] = useState<{id: number, name: string, message: string, created_at: string}[]>([]);
   const [newName, setNewName] = useState("");
   const [newMsg, setNewMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Load from local storage on initial mount
   useEffect(() => {
-    const savedMessages = localStorage.getItem("portfolio_guestbook");
-    if (savedMessages) {
-      try {
-        setMessages(JSON.parse(savedMessages));
-      } catch (e) {
-        console.error("Failed to parse guestbook messages");
-      }
-    }
+    fetchMessages();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const fetchMessages = async () => {
+    const { data, error } = await supabase
+      .from('guestbook')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) {
+      console.error("Error fetching messages:", error);
+    } else if (data) {
+      setMessages(data);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newName.trim() || !newMsg.trim()) return;
 
-    const newMessages = [
-      { id: Date.now(), name: newName, text: newMsg, date: new Date().toLocaleDateString('en-GB') },
-      ...messages,
-    ];
+    setIsLoading(true);
 
-    setMessages(newMessages);
-    // Save to local storage automatically
-    localStorage.setItem("portfolio_guestbook", JSON.stringify(newMessages));
+    const { data, error } = await supabase
+      .from('guestbook')
+      .insert([{ name: newName, message: newMsg }])
+      .select();
 
-    setNewName("");
-    setNewMsg("");
+    if (error) {
+      console.error("Error inserting message:", error);
+      alert("Gagal mengirim pesan.");
+    } else if (data) {
+      setMessages([data[0], ...messages]);
+      setNewName("");
+      setNewMsg("");
+    }
+    
+    setIsLoading(false);
+  };
+
+  // Format date helper
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-GB', { 
+      day: '2-digit', month: 'short', year: 'numeric', 
+      hour: '2-digit', minute: '2-digit' 
+    }).format(date);
   };
 
   return (
@@ -62,6 +83,7 @@ export default function Guestbook() {
                 placeholder="Your Name" 
                 className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-colors"
                 required
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -73,16 +95,20 @@ export default function Guestbook() {
                 placeholder="What's on your mind?" 
                 className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
                 required
+                disabled={isLoading}
               />
             </div>
-            <button type="submit" className="w-full bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black font-bold py-3 px-4 rounded-xl hover:opacity-90 transition-opacity">
-              Sign Guestbook
+            <button type="submit" disabled={isLoading} className="w-full bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black font-bold py-3 px-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50">
+              {isLoading ? "Sending..." : "Sign Guestbook"}
             </button>
           </form>
         </div>
 
         {/* Message List */}
         <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+          {messages.length === 0 && (
+            <p className="text-center text-gray-500 italic">No messages yet. Be the first to sign!</p>
+          )}
           {messages.map((msg) => (
             <div key={msg.id} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#D4AF37]/50 transition-colors group">
               <div className="flex justify-between items-start mb-4">
@@ -92,9 +118,11 @@ export default function Guestbook() {
                   </div>
                   {msg.name}
                 </h4>
-                <span className="text-xs text-gray-500 bg-black/50 px-3 py-1 rounded-full border border-white/5">{msg.date}</span>
+                <span className="text-xs text-gray-500 bg-black/50 px-3 py-1 rounded-full border border-white/5">
+                  {formatDate(msg.created_at)}
+                </span>
               </div>
-              <p className="text-gray-300 pl-12 leading-relaxed">{msg.text}</p>
+              <p className="text-gray-300 pl-12 leading-relaxed">{msg.message}</p>
             </div>
           ))}
         </div>
