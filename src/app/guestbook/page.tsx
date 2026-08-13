@@ -40,7 +40,7 @@ export default function Guestbook() {
 
     if (error) {
       console.error("Error inserting message:", error);
-      alert("Gagal mengirim pesan.");
+      alert("Gagal mengirim pesan: " + error.message);
     } else if (data) {
       setMessages([data[0], ...messages]);
       setNewName("");
