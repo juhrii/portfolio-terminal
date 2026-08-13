@@ -371,18 +371,21 @@ export default function Home() {
             {/* Contact Form Panel */}
             <div className="glass-panel p-8 md:p-10">
               <h3 className="text-2xl font-semibold text-gradient-gold mb-6">Send a Message</h3>
-              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Ini masih berupa desain UI. Nanti bisa kita hubungkan ke pengirim email!'); }}>
+              <form action="https://api.web3forms.com/submit" method="POST" className="space-y-4">
+                <input type="hidden" name="access_key" value="75a6a81e-dd4f-4a87-9a9b-d2b1ba460399" />
+                <input type="hidden" name="subject" value="New Message from Portfolio" />
+                <input type="hidden" name="redirect" value="https://web3forms.com/success" />
                 <div>
                   <label className="block text-sm text-gray-300 mb-2">Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors" />
+                  <input type="text" name="name" placeholder="John Doe" required className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors" />
                 </div>
                 <div>
                   <label className="block text-sm text-gray-300 mb-2">Email</label>
-                  <input type="email" placeholder="john@example.com" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors" />
+                  <input type="email" name="email" placeholder="john@example.com" required className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors" />
                 </div>
                 <div>
                   <label className="block text-sm text-gray-300 mb-2">Message</label>
-                  <textarea rows={4} placeholder="Your message here..." className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"></textarea>
+                  <textarea rows={4} name="message" placeholder="Your message here..." required className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"></textarea>
                 </div>
                 <button type="submit" className="w-full bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black font-semibold py-3 px-4 rounded-xl hover:opacity-90 transition-opacity">
                   Send Message
