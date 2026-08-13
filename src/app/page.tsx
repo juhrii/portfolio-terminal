@@ -13,15 +13,12 @@ function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Optional: Hentikan observasi jika hanya ingin animasi 1x (uncomment baris bawah ini)
-          // observer.unobserve(entry.target);
-        } else {
-          // Jika ingin elemen mengulang animasi setiap kali di-scroll ke luar lalu masuk lagi
-          setIsVisible(false);
+          // Hentikan observasi setelah elemen terlihat agar tidak lag saat di-scroll berulang kali
+          if (entry.target) observer.unobserve(entry.target);
         }
       },
       {
-        threshold: 0.15, // Memicu animasi saat 15% elemen terlihat di layar
+        threshold: 0.1, // Lebih responsif (10%)
       }
     );
 
