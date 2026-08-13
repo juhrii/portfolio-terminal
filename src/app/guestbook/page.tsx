@@ -4,10 +4,7 @@ import { useState, useEffect } from "react";
 import { Navbar } from "@/components/navbar";
 
 export default function Guestbook() {
-  const [messages, setMessages] = useState([
-    { id: 1, name: "Budi Santoso", text: "Portfolio yang sangat keren! Desain, animasi, dan komposisi warnanya terasa premium banget.", date: "Today" },
-    { id: 2, name: "HRD Tech Indo", text: "Halo Juhri, kami tertarik dengan profile Anda. Mari terhubung di LinkedIn.", date: "Yesterday" },
-  ]);
+  const [messages, setMessages] = useState<{id: number, name: string, text: string, date: string}[]>([]);
 
   const [newName, setNewName] = useState("");
   const [newMsg, setNewMsg] = useState("");
