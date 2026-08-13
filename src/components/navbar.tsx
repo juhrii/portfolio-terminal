@@ -18,7 +18,8 @@ export function Navbar() {
       </Link>
 
       {/* Right Links */}
-      <div className="hidden md:flex flex-1 justify-end gap-8 text-sm font-medium text-gray-300 items-center">
+      <div className="hidden md:flex flex-1 justify-end gap-6 text-sm font-medium text-gray-300 items-center">
+        <Link href="/guestbook" className="hover:text-[#D4AF37] transition-colors">Guestbook</Link>
         <Link href="/#contact" className="hover:text-[#D4AF37] transition-colors">Contact</Link>
         <a href="#" className="hover:text-white px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all border border-white/5">Resume</a>
       </div>

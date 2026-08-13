@@ -208,7 +208,7 @@ export default function Home() {
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">Flutter</span>
-                    <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">Dart</span>
+                    <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">Server</span>
                     <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">C#</span>
                   </div>
                   <div className="pt-4">
@@ -235,7 +235,7 @@ export default function Home() {
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">Flutter</span>
-                    <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">Dart</span>
+                    <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">Server</span>
                     <span className="text-sm font-semibold px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300">C#</span>
                   </div>
                   <div className="pt-4">
