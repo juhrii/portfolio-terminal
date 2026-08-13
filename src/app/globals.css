@@ -66,6 +66,29 @@ body {
   background-clip: text;
 }
 
+/* Entrance Animation */
+@keyframes fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fade-in-scale {
+  opacity: 0;
+  animation: fade-in-scale 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.delay-100 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 300ms; }
+.delay-300 { animation-delay: 450ms; }
+.delay-400 { animation-delay: 600ms; }
+.delay-500 { animation-delay: 750ms; }
+
 /* Ambient Glowing Orbs */
 .ambient-orb {
   position: fixed;

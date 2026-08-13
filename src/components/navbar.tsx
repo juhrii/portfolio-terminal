@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export function Navbar() {
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl glass-panel px-6 py-4 flex justify-between items-center rounded-2xl">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl glass-panel px-6 py-4 flex justify-between items-center rounded-2xl animate-fade-in-scale">
       
       {/* Left Links */}
       <div className="hidden md:flex flex-1 justify-start gap-8 text-sm font-medium text-gray-300">
