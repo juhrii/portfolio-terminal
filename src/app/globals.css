@@ -63,6 +63,20 @@ body {
   animation-play-state: paused;
 }
 
+/* Scribble Signature Animation */
+.signature-draw path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawSignature 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes drawSignature {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Glassmorphism Panel Utility */
 .glass-panel {
   background: rgba(255, 255, 255, 0.03);
