@@ -1,60 +1,80 @@
 "use client";
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl glass-panel px-6 py-4 flex justify-between items-center rounded-2xl animate-fade-in-scale">
-        
-        {/* Left Links (Desktop) */}
-        <div className="hidden md:flex flex-1 justify-start gap-8 text-sm font-medium text-gray-300">
-          <Link href="/#about" className="hover:text-[#D4AF37] transition-colors">About</Link>
-          <Link href="/#projects" className="hover:text-[#D4AF37] transition-colors">Projects</Link>
-        </div>
-
-        {/* Center Logo */}
-        <div className="flex-1 md:flex-none flex justify-start md:justify-center">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold tracking-wider text-white whitespace-nowrap hover:scale-105 transition-transform cursor-pointer block">
-            Saifudin <span className="text-gradient-gold">Juhri</span>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#050505]/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
+        <nav className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          
+          {/* Logo */}
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors flex items-center gap-2">
+            <span className="text-[#D4AF37]/50">&lt;</span>
+            Saifudin
+            <span className="text-[#D4AF37]/50">/&gt;</span>
           </Link>
-        </div>
 
-        {/* Right Links (Desktop) */}
-        <div className="hidden md:flex flex-1 justify-end gap-6 text-sm font-medium text-gray-300 items-center">
-          <Link href="/guestbook" className="hover:text-[#D4AF37] transition-colors">Guestbook</Link>
-          <Link href="/#contact" className="hover:text-[#D4AF37] transition-colors">Contact</Link>
-          <a href="#" className="hover:text-white px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all border border-white/5">Resume</a>
-        </div>
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center gap-8 text-lg font-medium text-white/70">
+            <Link href="/#services" className="hover:text-white transition-colors relative group">
+              Services
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#D4AF37] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </Link>
+            <Link href="/#experience" className="hover:text-white transition-colors relative group">
+              Experience
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#D4AF37] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </Link>
+            <Link href="/#projects" className="hover:text-white transition-colors relative group">
+              Projects
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#D4AF37] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </Link>
+            <Link href="/guestbook" className="hover:text-white transition-colors relative group">
+              Guestbook
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#D4AF37] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </Link>
+            <Link href="/#contact" className="hover:text-white transition-colors relative group">
+              Contact
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#D4AF37] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </Link>
+          </div>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-white p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {isMobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
-      </nav>
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </nav>
+      </header>
 
       {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center space-y-8 animate-fade-in">
-          <Link href="/#about" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-medium text-white hover:text-[#D4AF37] transition-colors">About</Link>
-          <Link href="/#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-medium text-white hover:text-[#D4AF37] transition-colors">Projects</Link>
-          <Link href="/guestbook" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-medium text-white hover:text-[#D4AF37] transition-colors">Guestbook</Link>
-          <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-medium text-white hover:text-[#D4AF37] transition-colors">Contact</Link>
-          <a href="#" className="text-xl text-black bg-[#D4AF37] px-8 py-3 rounded-full mt-4 font-bold">Resume</a>
-        </div>
-      )}
+      <div className={`fixed inset-0 z-40 bg-[#050505] transition-transform duration-500 lg:hidden flex flex-col items-center justify-center space-y-8 ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+        <Link href="/#services" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-bold text-white hover:text-[#D4AF37] transition-colors">Services</Link>
+        <Link href="/#experience" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-bold text-white hover:text-[#D4AF37] transition-colors">Experience</Link>
+        <Link href="/#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-bold text-white hover:text-[#D4AF37] transition-colors">Projects</Link>
+        <Link href="/guestbook" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-bold text-white hover:text-[#D4AF37] transition-colors">Guestbook</Link>
+        <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-bold text-white hover:text-[#D4AF37] transition-colors">Contact</Link>
+      </div>
     </>
   );
 }
