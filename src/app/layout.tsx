@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Caveat } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CustomCursor } from "@/components/custom-cursor";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-grotesk" });
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-[#0B0914] text-[#e5e5e5] font-sans overflow-x-hidden selection:bg-[#A855F7]/30 selection:text-white cursor-default">
         <CustomCursor />
         {children}
+        <Footer />
       </body>
     </html>
   );
