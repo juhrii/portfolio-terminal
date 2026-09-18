@@ -71,7 +71,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .preloader-overlay.hidden-overlay {
@@ -92,7 +92,7 @@ body {
   stroke-width: 30px;
   stroke-dasharray: 18000;
   stroke-dashoffset: 18000;
-  animation: preloaderDraw 2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  animation: preloaderDraw 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
 }
 
 @keyframes preloaderDraw {
