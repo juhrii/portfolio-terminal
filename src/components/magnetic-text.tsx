@@ -3,48 +3,58 @@ import { useEffect, useRef, useState } from "react";
 
 export function MagneticText({ children, className = "" }: { children: React.ReactNode, className?: string }) {
   const containerRef = useRef<HTMLSpanElement>(null);
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
-    if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) {
+      setIsDesktop(false);
+      return;
+    }
 
-    // Use a direct mousemove listener to track local coordinates
+    // Direct DOM manipulation for maximum performance and foolproof rendering
     const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = Math.round(e.clientX - rect.left);
-        const y = Math.round(e.clientY - rect.top);
+      if (!containerRef.current) return;
+      
+      const letters = containerRef.current.children;
+      for (let i = 0; i < letters.length; i++) {
+        const letter = letters[i] as HTMLSpanElement;
+        const rect = letter.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
         
-        // Update state directly for the clip-path
-        setMousePos({ x, y });
+        // Calculate distance from cursor center to letter center
+        const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+        
+        // If within cursor radius (approx 40px to cover the 32px radius + letter bounds), turn White
+        if (dist < 40) {
+          letter.style.color = "#ffffff";
+        } else {
+          letter.style.color = "#A855F7";
+        }
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  return (
-    <span ref={containerRef} className={`relative inline-block ${className}`}>
-      {/* Base Layer: Normal Purple Text */}
-      <span className="text-[#A855F7]">
-        {children}
-      </span>
+  // Fallback for mobile or non-string children
+  if (typeof children !== "string" || !isDesktop) {
+    return <span className={`text-[#A855F7] ${className}`}>{children}</span>;
+  }
 
-      {/* Top Layer: White Text masked by a circle following the mouse */}
-      <span 
-        className="absolute inset-0 text-white pointer-events-none"
-        aria-hidden="true"
-        style={{
-          clipPath: `circle(32px at ${mousePos.x}px ${mousePos.y}px)`,
-          WebkitClipPath: `circle(32px at ${mousePos.x}px ${mousePos.y}px)`
-        }}
-      >
-        {children}
-      </span>
+  // Render each character as an individual span to be manipulated
+  return (
+    <span ref={containerRef} className={`inline-flex ${className}`}>
+      {children.split("").map((char, i) => (
+        <span 
+          key={i} 
+          className="transition-colors duration-150 text-[#A855F7]"
+          style={{ whiteSpace: 'pre' }}
+        >
+          {char}
+        </span>
+      ))}
     </span>
   );
 }
