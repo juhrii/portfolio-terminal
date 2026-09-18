@@ -1,3 +1,4 @@
+import { MagneticText } from '@/components/magnetic-text';
 "use client";
 
 import Link from 'next/link';

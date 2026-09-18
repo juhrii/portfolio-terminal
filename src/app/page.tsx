@@ -1,3 +1,4 @@
+import { MagneticText } from '@/components/magnetic-text';
 "use client";
 
 import { Navbar } from "@/components/navbar";
