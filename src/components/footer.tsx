@@ -10,9 +10,9 @@ export function Footer() {
         {/* Brand / Logo */}
         <div className="flex flex-col items-center md:items-start space-y-4">
           <Link href="/" className="text-2xl font-bold tracking-tight text-white hover:text-[#A855F7] transition-colors flex items-center gap-2">
-            <span className="text-[#A855F7]/50">&lt;</span>
+            <span className="magic-purple-text opacity-50">&lt;</span>
             Juhri
-            <span className="text-[#A855F7]/50">/&gt;</span>
+            <span className="magic-purple-text opacity-50">/&gt;</span>
           </Link>
           <p className="text-sm text-gray-500 max-w-xs text-center md:text-left">
             Crafting digital experiences with thoughtful design and robust engineering.
