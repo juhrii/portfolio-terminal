@@ -19,14 +19,16 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
       for (let i = 0; i < letters.length; i++) {
         const letter = letters[i] as HTMLSpanElement;
         const rect = letter.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        // Use Circle-Rectangle intersection to handle massive font sizes correctly
+        const closestX = Math.max(rect.left, Math.min(e.clientX, rect.right));
+        const closestY = Math.max(rect.top, Math.min(e.clientY, rect.bottom));
         
-        // Calculate distance from cursor center to letter center
-        const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+        const distanceX = e.clientX - closestX;
+        const distanceY = e.clientY - closestY;
+        const distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
         
-        // If within cursor radius (approx 40px to cover the 32px radius + letter bounds), turn White
-        if (dist < 48) {
+        // Cursor radius is 32px. We use 40px (1600 squared) for a slight margin so it snaps right before touching
+        if (distanceSquared < 1600) {
           letter.style.color = "#ffffff";
         } else {
           letter.style.color = "#A855F7";
