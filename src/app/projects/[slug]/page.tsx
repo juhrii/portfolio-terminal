@@ -52,11 +52,12 @@ const projectsData = {
 };
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export default function ProjectPage({ params }: Props) {
-  const project = projectsData[params.slug as keyof typeof projectsData];
+export default async function ProjectPage({ params }: Props) {
+  const resolvedParams = await params;
+  const project = projectsData[resolvedParams.slug as keyof typeof projectsData];
 
   if (!project) {
     notFound();
