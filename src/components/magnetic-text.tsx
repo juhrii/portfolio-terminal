@@ -11,20 +11,22 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
 
     const updateGradient = () => {
       if (textRef.current) {
-        // Read the exact spring coordinates set by CustomCursor
-        const cursorXStr = document.documentElement.style.getPropertyValue('--cursor-x');
-        const cursorYStr = document.documentElement.style.getPropertyValue('--cursor-y');
+        let cursorX = (window as any).__cursorX;
+        let cursorY = (window as any).__cursorY;
         
-        const cursorX = cursorXStr ? parseFloat(cursorXStr) : -1000;
-        const cursorY = cursorYStr ? parseFloat(cursorYStr) : -1000;
+        // Fallback if cursor hasn't moved yet
+        if (cursorX === undefined || cursorY === undefined) {
+          cursorX = -1000;
+          cursorY = -1000;
+        }
         
-        // Calculate local element coordinates manually to avoid CSS calc() compatibility issues
         const rect = textRef.current.getBoundingClientRect();
-        const localX = cursorX - rect.left;
-        const localY = cursorY - rect.top;
         
-        // Directly apply the computed values
-        textRef.current.style.backgroundImage = `radial-gradient(circle 32px at ${localX}px ${localY}px, #ffffff 32px, #A855F7 34px)`;
+        // Math.round to prevent subpixel decimal parsing errors in older WebKit engines
+        const localX = Math.round(cursorX - rect.left);
+        const localY = Math.round(cursorY - rect.top);
+        
+        textRef.current.style.backgroundImage = `radial-gradient(circle 32px at ${localX}px ${localY}px, #ffffff 32px, #A855F7 33px)`;
       }
       
       animationFrameId = requestAnimationFrame(updateGradient);
@@ -42,7 +44,7 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
       ref={textRef}
       className={`inline-block ${className}`}
       style={{
-        backgroundImage: `radial-gradient(circle 32px at -1000px -1000px, #ffffff 32px, #A855F7 34px)`,
+        backgroundImage: `radial-gradient(circle 32px at -1000px -1000px, #ffffff 32px, #A855F7 33px)`,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         color: "transparent",

@@ -7,7 +7,6 @@ export function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  // Smooth spring configuration for the cursor
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
@@ -16,18 +15,16 @@ export function CustomCursor() {
   const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
-    // Check if it's a touch device / mobile
     if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) {
       setIsDesktop(false);
       return;
     }
 
-    // Subscribe to spring changes to update global CSS variables for MagneticText
     const unsubscribeX = cursorXSpring.on("change", (latestX) => {
-      document.documentElement.style.setProperty('--cursor-x', `${latestX + 32}px`);
+      (window as any).__cursorX = latestX + 32;
     });
     const unsubscribeY = cursorYSpring.on("change", (latestY) => {
-      document.documentElement.style.setProperty('--cursor-y', `${latestY + 32}px`);
+      (window as any).__cursorY = latestY + 32;
     });
 
     const updateMousePosition = (e: MouseEvent) => {
