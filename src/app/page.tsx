@@ -82,15 +82,10 @@ export default function Home() {
               
               <Reveal delay={100}>
                 {/* Signature */}
-                <div className="w-full max-w-[280px] opacity-90 mt-8 md:mt-0">
-                  <svg viewBox="0 0 340 140" className="w-full h-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                    <g>
-                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M8,96 C8,96 22,14 36,14 C46,14 34,96 48,96 C52,96 52,44 58,40 C64,36 62,96 72,96 C76,96 74,48 80,44 C86,40 84,96 92,96 C96,96 94,50 98,46 C102,42 100,90 108,88 C112,86 108,38 114,34 C120,30 116,88 128,84"></path>
-                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M148,92 C148,32 156,26 162,28 C174,34 150,64 156,68 C162,72 172,94 178,92 C184,90 178,54 186,50 C194,46 188,92 192,90 C196,88 194,56 198,92 C202,128 182,136 178,116 C174,100 208,50 216,48 C224,46 216,90 222,88 C226,86 222,36 228,30 C234,24 230,90 242,82"></path>
-                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M22,54 C28,50 42,48 50,52"></path>
-                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M18,108 C60,118 180,116 256,90 C268,86 274,82 280,78"></path>
-                    </g>
-                  </svg>
+                <div className="w-full max-w-[280px] opacity-90 mt-8 md:mt-4 ml-2">
+                  <div className="font-signature text-5xl md:text-6xl text-white transform -rotate-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    Saifudin Juhri
+                  </div>
                 </div>
               </Reveal>
 
