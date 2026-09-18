@@ -26,7 +26,7 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
         const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
         
         // If within cursor radius (approx 40px to cover the 32px radius + letter bounds), turn White
-        if (dist < 40) {
+        if (dist < 48) {
           letter.style.color = "#ffffff";
         } else {
           letter.style.color = "#A855F7";
@@ -49,7 +49,7 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
       {children.split("").map((char, i) => (
         <span 
           key={i} 
-          className="transition-colors duration-150 text-[#A855F7]"
+          className="text-[#A855F7]"
           style={{ whiteSpace: 'pre' }}
         >
           {char}
