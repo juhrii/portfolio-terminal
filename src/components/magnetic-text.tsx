@@ -1,56 +1,50 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function MagneticText({ children, className = "" }: { children: React.ReactNode, className?: string }) {
-  const textRef = useRef<HTMLSpanElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
 
   useEffect(() => {
     if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
 
-    let animationFrameId: number;
-
-    const updateGradient = () => {
-      if (textRef.current) {
-        let cursorX = (window as any).__cursorX;
-        let cursorY = (window as any).__cursorY;
+    // Use a direct mousemove listener to track local coordinates
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = Math.round(e.clientX - rect.left);
+        const y = Math.round(e.clientY - rect.top);
         
-        // Fallback if cursor hasn't moved yet
-        if (cursorX === undefined || cursorY === undefined) {
-          cursorX = -1000;
-          cursorY = -1000;
-        }
-        
-        const rect = textRef.current.getBoundingClientRect();
-        
-        // Math.round to prevent subpixel decimal parsing errors in older WebKit engines
-        const localX = Math.round(cursorX - rect.left);
-        const localY = Math.round(cursorY - rect.top);
-        
-        textRef.current.style.backgroundImage = `radial-gradient(circle 32px at ${localX}px ${localY}px, #ffffff 32px, #A855F7 33px)`;
+        // Update state directly for the clip-path
+        setMousePos({ x, y });
       }
-      
-      animationFrameId = requestAnimationFrame(updateGradient);
     };
 
-    updateGradient();
-
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    
     return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   return (
-    <span
-      ref={textRef}
-      className={`inline-block ${className}`}
-      style={{
-        backgroundImage: `radial-gradient(circle 32px at -1000px -1000px, #ffffff 32px, #A855F7 33px)`,
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        color: "transparent",
-      }}
-    >
-      {children}
+    <span ref={containerRef} className={`relative inline-block ${className}`}>
+      {/* Base Layer: Normal Purple Text */}
+      <span className="text-[#A855F7]">
+        {children}
+      </span>
+
+      {/* Top Layer: White Text masked by a circle following the mouse */}
+      <span 
+        className="absolute inset-0 text-white pointer-events-none"
+        aria-hidden="true"
+        style={{
+          clipPath: `circle(32px at ${mousePos.x}px ${mousePos.y}px)`,
+          WebkitClipPath: `circle(32px at ${mousePos.x}px ${mousePos.y}px)`
+        }}
+      >
+        {children}
+      </span>
     </span>
   );
 }
