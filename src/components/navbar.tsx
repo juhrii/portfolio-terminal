@@ -23,7 +23,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold tracking-tight text-white hover:text-[#A855F7] transition-colors flex items-center gap-2">
             <span className="text-[#A855F7]/50">&lt;</span>
-            Saifudin
+            Juhri
             <span className="text-[#A855F7]/50">/&gt;</span>
           </Link>
 
