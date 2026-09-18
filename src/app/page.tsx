@@ -1,5 +1,5 @@
-import { MagneticText } from '@/components/magnetic-text';
 "use client";
+import { MagneticText } from '@/components/magnetic-text';
 
 import { Navbar } from "@/components/navbar";
 import { useEffect, useRef, useState, ReactNode } from "react";

@@ -7,10 +7,6 @@ export function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
   const [isVisible, setIsVisible] = useState(false);
   const [isDesktop, setIsDesktop] = useState(true);
 
@@ -19,13 +15,6 @@ export function CustomCursor() {
       setIsDesktop(false);
       return;
     }
-
-    const unsubscribeX = cursorXSpring.on("change", (latestX) => {
-      (window as any).__cursorX = latestX + 32;
-    });
-    const unsubscribeY = cursorYSpring.on("change", (latestY) => {
-      (window as any).__cursorY = latestY + 32;
-    });
 
     const updateMousePosition = (e: MouseEvent) => {
       cursorX.set(e.clientX - 32);
@@ -43,10 +32,8 @@ export function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseout", handleMouseLeave);
-      unsubscribeX();
-      unsubscribeY();
     };
-  }, [isVisible, cursorX, cursorY, cursorXSpring, cursorYSpring]);
+  }, [isVisible, cursorX, cursorY]);
 
   if (!isDesktop) return null;
 
@@ -54,8 +41,8 @@ export function CustomCursor() {
     <motion.div
       className="fixed top-0 left-0 w-[64px] h-[64px] rounded-full pointer-events-none z-[10000] mix-blend-difference"
       style={{
-        x: cursorXSpring,
-        y: cursorYSpring,
+        x: cursorX,
+        y: cursorY,
         opacity: isVisible ? 1 : 0,
         backgroundColor: "#ffffff"
       }}
