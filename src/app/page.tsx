@@ -172,7 +172,7 @@ export default function Home() {
       <section id="services" className="py-32 px-6 max-w-7xl mx-auto">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-white/10 pb-8">
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight">What I <span className="text-[#A855F7]">Do /</span></h2>
+            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] font-black uppercase tracking-tighter leading-none">What I <MagneticText>Do /</MagneticText></h2>
             <p className="text-gray-400 max-w-md mt-6 md:mt-0 text-lg">( SERVICES )<br/>I build digital experiences with a balance of thoughtful design, solid engineering, and real-world performance.</p>
           </div>
         </Reveal>
@@ -207,8 +207,8 @@ export default function Home() {
       <section id="experience" className="py-32 px-6 bg-[#151030]">
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-24 text-center">
-              Career & <span className="text-[#A855F7]">Experience</span>
+            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] font-black uppercase tracking-tighter leading-none mb-24 text-center">
+              Career & <MagneticText>Experience</MagneticText>
             </h2>
           </Reveal>
 
@@ -248,7 +248,7 @@ export default function Home() {
       <section id="projects" className="py-32 px-6 max-w-7xl mx-auto">
         <Reveal>
           <div className="flex flex-col mb-20 text-center items-center">
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-4">Selected <span className="text-[#A855F7]">Projects</span></h2>
+            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] font-black uppercase tracking-tighter leading-none mb-6">Selected <MagneticText>Projects</MagneticText></h2>
             <p className="text-gray-400 text-lg max-w-2xl">( WORKS ) A showcase of my recent developments</p>
           </div>
         </Reveal>
@@ -289,7 +289,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="text-center space-y-6 mb-20">
-              <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tight">Let's <span className="text-[#A855F7]">Talk</span></h2>
+              <h2 className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-black uppercase tracking-tighter leading-none">Let's <MagneticText>Talk</MagneticText></h2>
               <p className="text-xl text-gray-400">Have a project in mind? Feel free to drop a message.</p>
             </div>
           </Reveal>
