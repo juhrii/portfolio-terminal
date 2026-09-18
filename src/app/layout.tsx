@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${grotesk.variable} ${caveat.variable} antialiased scroll-smooth`} data-scroll-behavior="smooth">
-      <body className="min-h-screen bg-black text-[#e5e5e5] font-sans overflow-x-hidden selection:bg-[#D4AF37]/30 selection:text-white cursor-default">
+      <body className="min-h-screen bg-[#0B0914] text-[#e5e5e5] font-sans overflow-x-hidden selection:bg-[#A855F7]/30 selection:text-white cursor-default">
         <CustomCursor />
         {children}
       </body>

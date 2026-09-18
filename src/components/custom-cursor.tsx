@@ -51,7 +51,7 @@ export function CustomCursor() {
     <>
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-[#D4AF37] rounded-full pointer-events-none z-[10000]"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#A855F7] rounded-full pointer-events-none z-[10000]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
@@ -63,13 +63,13 @@ export function CustomCursor() {
 
       {/* Outer Trailing Circle */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-[#D4AF37]/50 rounded-full pointer-events-none z-[10000] flex items-center justify-center bg-transparent"
+        className="fixed top-0 left-0 w-10 h-10 border border-[#A855F7]/50 rounded-full pointer-events-none z-[10000] flex items-center justify-center bg-transparent"
         animate={{
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
           scale: isHovering ? 1.5 : 1,
           opacity: isVisible ? 1 : 0,
-          backgroundColor: isHovering ? "rgba(212, 175, 55, 0.1)" : "transparent",
+          backgroundColor: isHovering ? "rgba(168, 85, 247, 0.1)" : "transparent",
         }}
         transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
       />

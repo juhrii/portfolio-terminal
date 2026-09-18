@@ -60,7 +60,7 @@ export default function Guestbook() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] bg-[url('/assets/images/noise.png')] selection:bg-[#D4AF37] selection:text-black">
+    <main className="min-h-screen bg-[#151030] bg-[url('/assets/images/noise.png')] selection:bg-[#A855F7] selection:text-black">
       <Navbar />
       
       <div className="pt-32 pb-20 px-6 max-w-3xl mx-auto">
@@ -81,7 +81,7 @@ export default function Guestbook() {
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
                 placeholder="Your Name" 
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                className="w-full bg-[#0B0914]/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#A855F7] transition-colors"
                 required
                 disabled={isLoading}
               />
@@ -93,12 +93,12 @@ export default function Guestbook() {
                 onChange={(e) => setNewMsg(e.target.value)}
                 rows={3} 
                 placeholder="What's on your mind?" 
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
+                className="w-full bg-[#0B0914]/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#A855F7] transition-colors resize-none"
                 required
                 disabled={isLoading}
               />
             </div>
-            <button type="submit" disabled={isLoading} className="w-full bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black font-bold py-3 px-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50">
+            <button type="submit" disabled={isLoading} className="w-full bg-gradient-to-r from-[#A855F7] to-[#E879F9] text-black font-bold py-3 px-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50">
               {isLoading ? "Sending..." : "Sign Guestbook"}
             </button>
           </form>
@@ -110,15 +110,15 @@ export default function Guestbook() {
             <p className="text-center text-gray-500 italic">No messages yet. Be the first to sign!</p>
           )}
           {messages.map((msg) => (
-            <div key={msg.id} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#D4AF37]/50 transition-colors group">
+            <div key={msg.id} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#A855F7]/50 transition-colors group">
               <div className="flex justify-between items-start mb-4">
                 <h4 className="text-white font-semibold flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#D4AF37] to-yellow-200 flex items-center justify-center text-black font-bold text-lg shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#A855F7] to-yellow-200 flex items-center justify-center text-black font-bold text-lg shadow-[0_0_15px_rgba(212,175,55,0.3)]">
                     {msg.name.charAt(0).toUpperCase()}
                   </div>
                   {msg.name}
                 </h4>
-                <span className="text-xs text-gray-500 bg-black/50 px-3 py-1 rounded-full border border-white/5">
+                <span className="text-xs text-gray-500 bg-[#0B0914]/50 px-3 py-1 rounded-full border border-white/5">
                   {formatDate(msg.created_at)}
                 </span>
               </div>

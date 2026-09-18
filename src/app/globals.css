@@ -3,11 +3,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #050505; /* Super dark */
+  --background: #0B0914; /* Super dark */
   --foreground: #f5f5f5;
-  --primary: #D4AF37; /* Gold */
+  --primary: #A855F7; /* Gold */
   --primary-foreground: #000000;
-  --card: #0a0a0a;
+  --card: #151030;
   --border: rgba(255, 255, 255, 0.1);
 }
 
@@ -42,7 +42,7 @@ body {
 
 /* Gold Text Gradient */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFF0B3 0%, #D4AF37 50%, #997A00 100%);
+  background: linear-gradient(135deg, #F5D0FE 0%, #A855F7 50%, #7E22CE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,7 +68,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background-color: #050505;
+  background-color: #0B0914;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +89,7 @@ body {
 }
 
 .preloader-scribble path {
-  stroke: #D4AF37;
+  stroke: #A855F7;
   stroke-width: 30px;
   stroke-dasharray: 18000;
   stroke-dashoffset: 18000;
@@ -113,7 +113,7 @@ body {
 
 /* Gold Text Gradient */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FFDF00 100%);
+  background: linear-gradient(135deg, #E879F9 0%, #A855F7 50%, #E879F9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -155,7 +155,7 @@ body {
 .orb-1 {
   width: 400px;
   height: 400px;
-  background: rgba(212, 175, 55, 0.15); /* Gold */
+  background: rgba(168, 85, 247, 0.15); /* Gold */
   top: -100px;
   left: -100px;
 }

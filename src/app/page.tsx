@@ -54,25 +54,25 @@ export default function Home() {
         </svg>
         <div className="relative z-10 flex flex-col items-center justify-center animate-pulse">
           <span className="text-white text-3xl md:text-5xl font-bold tracking-widest uppercase">Saifudin</span>
-          <span className="text-[#D4AF37] text-3xl md:text-5xl font-bold tracking-widest uppercase">Juhri</span>
+          <span className="text-[#A855F7] text-3xl md:text-5xl font-bold tracking-widest uppercase">Juhri</span>
         </div>
       </div>
 
-    <main className={`min-h-screen w-full relative bg-[#050505] text-[#f5f5f5] transition-opacity duration-1000 ${!showPreloader ? 'opacity-100' : 'opacity-0'}`}>
+    <main className={`min-h-screen w-full relative bg-[#0B0914] text-[#f5f5f5] transition-opacity duration-1000 ${!showPreloader ? 'opacity-100' : 'opacity-0'}`}>
       
       <Navbar />
 
       {/* --- HERO SECTION --- */}
       <section className="relative px-4 sm:px-6 lg:px-8 pt-32 pb-8 min-h-screen flex items-center justify-center">
-        <div className="relative w-full max-w-[1400px] h-[85vh] min-h-[600px] rounded-[2.5rem] overflow-hidden bg-[#0a0a0a] border border-white/10 shadow-2xl flex flex-col justify-between p-8 md:p-12 lg:p-16">
+        <div className="relative w-full max-w-[1400px] h-[85vh] min-h-[600px] rounded-[2.5rem] overflow-hidden bg-[#151030] border border-white/10 shadow-2xl flex flex-col justify-between p-8 md:p-12 lg:p-16">
           
           {/* Background Image & Overlay */}
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-[url('/assets/images/profile.jpg')] bg-cover bg-center opacity-30 mix-blend-luminosity"></div>
-             <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent"></div>
-             <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-[#0B0914] via-[#0B0914]/70 to-transparent"></div>
+             <div className="absolute inset-0 bg-gradient-to-r from-[#0B0914]/80 via-transparent to-transparent"></div>
              {/* Small ambient orb similar to the purple one in screenshot, but gold */}
-             <div className="absolute bottom-1/4 right-[10%] w-24 h-24 bg-[#D4AF37]/20 rounded-full blur-[40px] animate-pulse"></div>
+             <div className="absolute bottom-1/4 right-[10%] w-24 h-24 bg-[#A855F7]/20 rounded-full blur-[40px] animate-pulse"></div>
           </div>
 
           <div className="relative z-10 w-full flex flex-col md:flex-row justify-between h-full">
@@ -154,7 +154,7 @@ export default function Home() {
       </section>
 
       {/* --- SCROLLING MARQUEE SECTION --- */}
-      <section className="bg-[#D4AF37] text-black py-4 md:py-6 overflow-hidden flex items-center">
+      <section className="bg-[#A855F7] text-black py-4 md:py-6 overflow-hidden flex items-center">
         <div className="animate-marquee whitespace-nowrap flex items-center">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex items-center">
@@ -169,7 +169,7 @@ export default function Home() {
       <section id="services" className="py-32 px-6 max-w-7xl mx-auto">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 border-b border-white/10 pb-8">
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight">What I <span className="text-[#D4AF37]">Do /</span></h2>
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight">What I <span className="text-[#A855F7]">Do /</span></h2>
             <p className="text-gray-400 max-w-md mt-6 md:mt-0 text-lg">( SERVICES )<br/>I build digital experiences with a balance of thoughtful design, solid engineering, and real-world performance.</p>
           </div>
         </Reveal>
@@ -181,7 +181,7 @@ export default function Home() {
             { num: "03", title: "Backend Systems", desc: "Designing and implementing robust backend APIs and services using C#, Laravel, or Supabase to power your applications.", items: ["RESTful APIs", "Database Design", "Authentication"] }
           ].map((srv, idx) => (
             <Reveal key={idx} delay={idx * 100}>
-              <div className="sticky top-[10vh] border-t border-white/10 bg-[#050505] py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+              <div className="sticky top-[10vh] border-t border-white/10 bg-[#0B0914] py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                 <span className="md:col-span-2 text-xl text-gray-500 font-mono">( {srv.num} )</span>
                 <h3 className="md:col-span-4 text-3xl md:text-4xl font-bold">{srv.title}</h3>
                 <div className="md:col-span-6 space-y-6">
@@ -189,7 +189,7 @@ export default function Home() {
                   <ul className="space-y-3 border-t border-white/5 pt-6">
                     {srv.items.map((item, i) => (
                       <li key={i} className="flex gap-4 items-center text-white font-medium text-lg">
-                        <span className="text-xs text-[#D4AF37] font-mono">0{i+1}</span> {item}
+                        <span className="text-xs text-[#A855F7] font-mono">0{i+1}</span> {item}
                       </li>
                     ))}
                   </ul>
@@ -201,11 +201,11 @@ export default function Home() {
       </section>
 
       {/* --- EXPERIENCE TIMELINE --- */}
-      <section id="experience" className="py-32 px-6 bg-[#0a0a0a]">
+      <section id="experience" className="py-32 px-6 bg-[#151030]">
         <div className="max-w-5xl mx-auto">
           <Reveal>
             <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-24 text-center">
-              Career & <span className="text-[#D4AF37]">Experience</span>
+              Career & <span className="text-[#A855F7]">Experience</span>
             </h2>
           </Reveal>
 
@@ -220,11 +220,11 @@ export default function Home() {
               <Reveal key={idx} delay={100}>
                 <div className={`relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center ${idx % 2 === 0 ? 'md:text-right' : ''}`}>
                   {/* Glowing Node */}
-                  <div className="absolute left-[-5px] top-2 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-3 h-3 bg-[#D4AF37] rounded-full shadow-[0_0_15px_#D4AF37]"></div>
+                  <div className="absolute left-[-5px] top-2 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-3 h-3 bg-[#A855F7] rounded-full shadow-[0_0_15px_#A855F7]"></div>
                   
                   <div className={`${idx % 2 !== 0 ? 'md:col-start-2' : ''} pl-8 md:pl-0 space-y-2`}>
                     <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
-                    <p className="text-[#D4AF37] font-mono text-sm tracking-widest">{exp.company}</p>
+                    <p className="text-[#A855F7] font-mono text-sm tracking-widest">{exp.company}</p>
                     <p className="text-gray-400 mt-4 leading-relaxed">{exp.desc}</p>
                   </div>
                   <div className={`hidden md:block ${idx % 2 !== 0 ? 'md:col-start-1 md:row-start-1 md:text-right' : ''}`}>
@@ -245,7 +245,7 @@ export default function Home() {
       <section id="projects" className="py-32 px-6 max-w-7xl mx-auto">
         <Reveal>
           <div className="flex flex-col mb-20 text-center items-center">
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-4">Selected <span className="text-[#D4AF37]">Projects</span></h2>
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-4">Selected <span className="text-[#A855F7]">Projects</span></h2>
             <p className="text-gray-400 text-lg max-w-2xl">( WORKS ) A showcase of my recent developments</p>
           </div>
         </Reveal>
@@ -258,8 +258,8 @@ export default function Home() {
           ].map((project, idx) => (
             <Reveal key={idx}>
               <div className={`flex flex-col ${project.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center group`}>
-                <div className="w-full lg:w-1/2 aspect-[4/3] relative rounded-3xl overflow-hidden bg-[#0a0a0a] border border-white/5">
-                  <div className="absolute inset-0 bg-[#D4AF37]/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                <div className="w-full lg:w-1/2 aspect-[4/3] relative rounded-3xl overflow-hidden bg-[#151030] border border-white/5">
+                  <div className="absolute inset-0 bg-[#A855F7]/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
                   <img src={project.img} alt={project.title} className="w-full h-full object-contain p-12 group-hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="w-full lg:w-1/2 space-y-6">
@@ -269,7 +269,7 @@ export default function Home() {
                     {project.tags.map(t => <span key={t} className="px-4 py-2 border border-white/20 rounded-full text-sm font-mono text-gray-300 uppercase">{t}</span>)}
                   </div>
                   <div className="pt-6">
-                     <a href={project.link} target="_blank" className="inline-flex items-center gap-2 text-white pb-1 border-b border-[#D4AF37] hover:text-[#D4AF37] transition-colors uppercase tracking-widest text-sm font-bold">
+                     <a href={project.link} target="_blank" className="inline-flex items-center gap-2 text-white pb-1 border-b border-[#A855F7] hover:text-[#A855F7] transition-colors uppercase tracking-widest text-sm font-bold">
                        View Source 
                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                      </a>
@@ -282,11 +282,11 @@ export default function Home() {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      <section id="contact" className="py-32 px-6 bg-[#0a0a0a] border-t border-white/5">
+      <section id="contact" className="py-32 px-6 bg-[#151030] border-t border-white/5">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="text-center space-y-6 mb-20">
-              <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tight">Let's <span className="text-[#D4AF37]">Talk</span></h2>
+              <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tight">Let's <span className="text-[#A855F7]">Talk</span></h2>
               <p className="text-xl text-gray-400">Have a project in mind? Feel free to drop a message.</p>
             </div>
           </Reveal>
@@ -298,12 +298,12 @@ export default function Home() {
                   <h3 className="text-2xl font-bold mb-8 uppercase tracking-widest text-white/50">Direct Links</h3>
                   <div className="space-y-6">
                     <a href="mailto:juhri@ubig.co.id" className="flex items-center gap-6 group">
-                      <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all">📧</div>
-                      <span className="text-2xl font-medium group-hover:text-[#D4AF37] transition-colors">juhri@ubig.co.id</span>
+                      <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#A855F7] group-hover:text-[#A855F7] transition-all">📧</div>
+                      <span className="text-2xl font-medium group-hover:text-[#A855F7] transition-colors">juhri@ubig.co.id</span>
                     </a>
                     <a href="https://wa.me/6281325145566" target="_blank" className="flex items-center gap-6 group">
-                      <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all">💬</div>
-                      <span className="text-2xl font-medium group-hover:text-[#D4AF37] transition-colors">+62 813-2514-5566</span>
+                      <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#A855F7] group-hover:text-[#A855F7] transition-all">💬</div>
+                      <span className="text-2xl font-medium group-hover:text-[#A855F7] transition-colors">+62 813-2514-5566</span>
                     </a>
                   </div>
                 </div>
@@ -317,18 +317,18 @@ export default function Home() {
                 <input type="hidden" name="redirect" value="https://web3forms.com/success" />
                 
                 <div className="border-b border-white/20 pb-2">
-                  <input type="text" name="name" placeholder="YOUR NAME" required className="w-full bg-transparent text-white text-xl placeholder-white/30 focus:outline-none focus:border-[#D4AF37]" />
+                  <input type="text" name="name" placeholder="YOUR NAME" required className="w-full bg-transparent text-white text-xl placeholder-white/30 focus:outline-none focus:border-[#A855F7]" />
                 </div>
                 <div className="border-b border-white/20 pb-2">
-                  <input type="email" name="email" placeholder="YOUR EMAIL" required className="w-full bg-transparent text-white text-xl placeholder-white/30 focus:outline-none focus:border-[#D4AF37]" />
+                  <input type="email" name="email" placeholder="YOUR EMAIL" required className="w-full bg-transparent text-white text-xl placeholder-white/30 focus:outline-none focus:border-[#A855F7]" />
                 </div>
                 <div className="border-b border-white/20 pb-2">
-                  <textarea rows={4} name="message" placeholder="MESSAGE..." required className="w-full bg-transparent text-white text-xl placeholder-white/30 focus:outline-none focus:border-[#D4AF37] resize-none"></textarea>
+                  <textarea rows={4} name="message" placeholder="MESSAGE..." required className="w-full bg-transparent text-white text-xl placeholder-white/30 focus:outline-none focus:border-[#A855F7] resize-none"></textarea>
                 </div>
                 
                 <button type="submit" className="group relative w-full flex items-center justify-center px-8 py-6 bg-white text-black font-bold uppercase tracking-widest overflow-hidden transition-transform hover:scale-[1.02]">
                   <span className="relative z-10">Send Message</span>
-                  <div className="absolute inset-0 bg-[#D4AF37] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                  <div className="absolute inset-0 bg-[#A855F7] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                 </button>
               </form>
             </Reveal>
