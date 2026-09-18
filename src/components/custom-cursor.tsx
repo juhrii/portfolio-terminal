@@ -37,7 +37,7 @@ export function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-[64px] h-[64px] rounded-full pointer-events-none z-[10000] mix-blend-difference"
+      className="fixed top-0 left-0 w-[64px] h-[64px] rounded-full pointer-events-none z-[10000] backdrop-invert backdrop-hue-rotate-180"
       animate={{
         x: mousePosition.x - 32,
         y: mousePosition.y - 32,
@@ -45,7 +45,8 @@ export function CustomCursor() {
       }}
       transition={{ type: "tween", ease: "backOut", duration: 0.15 }}
       style={{
-        backgroundColor: "#ffffff"
+        backgroundColor: "transparent",
+        boxShadow: "0 0 10px rgba(0,0,0,0.1)"
       }}
     />
   );
