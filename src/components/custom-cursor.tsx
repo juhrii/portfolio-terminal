@@ -37,15 +37,15 @@ export function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-[80px] h-[80px] rounded-full pointer-events-none z-[10000] mix-blend-difference"
+      className="fixed top-0 left-0 w-[64px] h-[64px] rounded-full pointer-events-none z-[10000] mix-blend-difference"
       animate={{
-        x: mousePosition.x - 40,
-        y: mousePosition.y - 40,
+        x: mousePosition.x - 32,
+        y: mousePosition.y - 32,
         opacity: isVisible ? 1 : 0,
       }}
       transition={{ type: "tween", ease: "backOut", duration: 0.15 }}
       style={{
-        backgroundColor: "#A855F7"
+        backgroundColor: "#ffffff"
       }}
     />
   );
