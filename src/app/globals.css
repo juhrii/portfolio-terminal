@@ -62,19 +62,42 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
-
-/* Scribble Signature Animation */
-.signature-draw path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: drawSignature 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
-  animation-delay: 0.2s;
+/* Preloader Scribble Animation */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease-in-out;
 }
 
-@keyframes drawSignature {
-  to {
-    stroke-dashoffset: 0;
-  }
+.preloader-overlay.hidden-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader-scribble {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.preloader-scribble path {
+  stroke: #D4AF37;
+  stroke-width: 30px;
+  stroke-dasharray: 18000;
+  stroke-dashoffset: 18000;
+  animation: preloaderDraw 2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes preloaderDraw {
+  0% { stroke-dashoffset: 18000; }
+  100% { stroke-dashoffset: 0; }
 }
 
 /* Glassmorphism Panel Utility */
