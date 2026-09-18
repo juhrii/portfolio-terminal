@@ -1,24 +1,35 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function MagneticText({ children, className = "" }: { children: React.ReactNode, className?: string }) {
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
   const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     // Disable on touch devices
     if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const updateRect = () => {
       if (textRef.current) {
         const rect = textRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        setMousePos({ x, y });
+        textRef.current.style.setProperty('--elem-left', `${rect.left}px`);
+        textRef.current.style.setProperty('--elem-top', `${rect.top}px`);
       }
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    
+    // Initial calculation
+    updateRect();
+    
+    // Delay one frame to ensure layout is completely settled
+    requestAnimationFrame(updateRect);
+    
+    // Recalculate on scroll or resize
+    window.addEventListener("scroll", updateRect, { passive: true });
+    window.addEventListener("resize", updateRect, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", updateRect);
+      window.removeEventListener("resize", updateRect);
+    };
   }, []);
 
   return (
@@ -26,7 +37,8 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
       ref={textRef}
       className={`inline-block ${className}`}
       style={{
-        backgroundImage: `radial-gradient(circle 32px at ${mousePos.x}px ${mousePos.y}px, #ffffff 32px, #A855F7 34px)`,
+        // The gradient coordinates dynamically use the global spring cursor position minus the element's position on screen
+        backgroundImage: `radial-gradient(circle 32px at calc(var(--cursor-x, -1000px) - var(--elem-left, 0px)) calc(var(--cursor-y, -1000px) - var(--elem-top, 0px)), #ffffff 32px, #A855F7 34px)`,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         color: "transparent",
