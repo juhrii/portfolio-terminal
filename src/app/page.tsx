@@ -63,67 +63,97 @@ export default function Home() {
       <Navbar />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-16 px-6 overflow-hidden">
-        {/* Animated Gradient Background Orbs (Simulating Video Background) */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[50vw] h-[50vw] bg-[#D4AF37]/10 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] bg-white/5 rounded-full blur-[100px] mix-blend-screen animate-pulse" style={{animationDelay: '2s'}}></div>
-        </div>
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center">
+      <section className="relative px-4 sm:px-6 lg:px-8 pt-32 pb-8 min-h-screen flex items-center justify-center">
+        <div className="relative w-full max-w-[1400px] h-[85vh] min-h-[600px] rounded-[2.5rem] overflow-hidden bg-[#0a0a0a] border border-white/10 shadow-2xl flex flex-col justify-between p-8 md:p-12 lg:p-16">
           
-          {/* Top Bar: Socials & Stats */}
-          <Reveal delay={100}>
-            <div className="flex flex-col md:flex-row w-full justify-between items-start md:items-end gap-8 mb-16 w-full">
-              {/* Social Icons */}
-              <div className="flex gap-4">
-                <a href="https://github.com/juhrii" target="_blank" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors backdrop-blur-sm">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-                <a href="https://wa.me/6281325145566" target="_blank" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors backdrop-blur-sm">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                </a>
-                <a href="mailto:juhri@ubig.co.id" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors backdrop-blur-sm">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                </a>
-              </div>
+          {/* Background Image & Overlay */}
+          <div className="absolute inset-0 z-0">
+             <div className="absolute inset-0 bg-[url('/assets/images/profile.jpg')] bg-cover bg-center opacity-30 mix-blend-luminosity"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent"></div>
+             <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/80 via-transparent to-transparent"></div>
+             {/* Small ambient orb similar to the purple one in screenshot, but gold */}
+             <div className="absolute bottom-1/4 right-[10%] w-24 h-24 bg-[#D4AF37]/20 rounded-full blur-[40px] animate-pulse"></div>
+          </div>
 
-              {/* Stats */}
-              <div className="flex gap-6 divide-x divide-white/10">
-                <div className="flex flex-col items-center px-4">
-                  <span className="text-4xl md:text-5xl font-bold">+2</span>
-                  <span className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Years Experience</span>
+          <div className="relative z-10 w-full flex flex-col md:flex-row justify-between h-full">
+            
+            {/* Left Column: Signature, Socials, Stats */}
+            <div className="flex flex-col justify-between h-full w-full md:w-5/12">
+              
+              <Reveal delay={100}>
+                {/* Signature */}
+                <div className="w-full max-w-[280px] opacity-90 mt-8 md:mt-0">
+                  <svg viewBox="0 0 340 140" className="w-full h-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <g>
+                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M8,96 C8,96 22,14 36,14 C46,14 34,96 48,96 C52,96 52,44 58,40 C64,36 62,96 72,96 C76,96 74,48 80,44 C86,40 84,96 92,96 C96,96 94,50 98,46 C102,42 100,90 108,88 C112,86 108,38 114,34 C120,30 116,88 128,84"></path>
+                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M148,92 C148,32 156,26 162,28 C174,34 150,64 156,68 C162,72 172,94 178,92 C184,90 178,54 186,50 C194,46 188,92 192,90 C196,88 194,56 198,92 C202,128 182,136 178,116 C174,100 208,50 216,48 C224,46 216,90 222,88 C226,86 222,36 228,30 C234,24 230,90 242,82"></path>
+                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M22,54 C28,50 42,48 50,52"></path>
+                      <path style={{fill:'none', stroke:'#ffffff', strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round'}} d="M18,108 C60,118 180,116 256,90 C268,86 274,82 280,78"></path>
+                    </g>
+                  </svg>
                 </div>
-                <div className="flex flex-col items-center px-4">
-                  <span className="text-4xl md:text-5xl font-bold">+7</span>
-                  <span className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Projects Done</span>
-                </div>
+              </Reveal>
+
+              <div className="space-y-12 mt-auto mb-16 md:mb-12">
+                <Reveal delay={200}>
+                  {/* Socials */}
+                  <div className="flex gap-4 p-4 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md w-fit">
+                    <a href="https://github.com/juhrii" target="_blank" className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://wa.me/6281325145566" target="_blank" className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="mailto:juhri@ubig.co.id" className="w-10 h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={300}>
+                  {/* Stats */}
+                  <div className="flex gap-8">
+                    <div>
+                      <h3 className="text-4xl font-bold text-white">+2</h3>
+                      <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] mt-2">Years<br/>Experience</p>
+                    </div>
+                    <div>
+                      <h3 className="text-4xl font-bold text-white">+7</h3>
+                      <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] mt-2">Projects<br/>Completed</p>
+                    </div>
+                  </div>
+                </Reveal>
               </div>
             </div>
-          </Reveal>
 
-          {/* Huge Typography Name */}
-          <Reveal delay={200}>
-            <div className="text-center w-full leading-[0.85] tracking-tighter">
-              <h1 className="text-[12vw] md:text-[10vw] font-bold text-white uppercase block relative z-10">
-                Saifudin
-              </h1>
-              <h1 className="text-[12vw] md:text-[10vw] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#FFD700] uppercase block relative z-10">
-                Juhri
-              </h1>
+            {/* Right Column: Name & CV */}
+            <div className="flex flex-col justify-center items-end text-right w-full md:w-7/12 relative">
+              <Reveal delay={100}>
+                <h1 className="text-[14vw] sm:text-[10vw] md:text-[6.5rem] lg:text-[9rem] font-bold text-white uppercase leading-[0.85] tracking-tight drop-shadow-2xl">
+                  Saifudin<br/>Juhri
+                </h1>
+              </Reveal>
+              
+              <Reveal delay={200}>
+                <div className="mt-12 flex flex-col items-end space-y-8">
+                  <p className="text-xl md:text-2xl text-gray-200 font-medium">
+                    Software Engineer<br/>based in Indonesia
+                  </p>
+                  <a href="#" className="group relative inline-flex items-center justify-center px-10 py-4 bg-transparent border-2 border-white/80 text-white font-bold uppercase tracking-[0.2em] text-sm rounded-full overflow-hidden transition-transform hover:scale-105">
+                    <span className="relative z-10 transition-colors group-hover:text-black">DOWNLOAD CV</span>
+                    <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out z-0"></div>
+                  </a>
+                </div>
+              </Reveal>
             </div>
             
-            <div className="flex flex-col md:flex-row justify-between items-center mt-12 gap-8 w-full px-4">
-              <p className="text-xl md:text-2xl text-gray-400 font-light max-w-md text-center md:text-left">
-                Software Engineer <br/> based in Indonesia.
-              </p>
-              
-              <a href="#" className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold uppercase tracking-wider rounded-full overflow-hidden transition-transform hover:scale-105">
-                <span className="relative z-10">DOWNLOAD CV</span>
-                <div className="absolute inset-0 bg-[#D4AF37] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out z-0"></div>
-              </a>
-            </div>
-          </Reveal>
+          </div>
+
+          {/* Bottom Scroll Indicator */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center opacity-50 animate-bounce pointer-events-none">
+            <svg className="w-4 h-4 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            <span className="text-[10px] text-white uppercase tracking-[0.2em] font-bold">Scroll</span>
+          </div>
 
         </div>
       </section>
