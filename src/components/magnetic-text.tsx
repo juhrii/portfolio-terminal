@@ -5,30 +5,35 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
   const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Disable on touch devices
     if (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches) return;
 
-    const updateRect = () => {
+    let animationFrameId: number;
+
+    const updateGradient = () => {
       if (textRef.current) {
+        // Read the exact spring coordinates set by CustomCursor
+        const cursorXStr = document.documentElement.style.getPropertyValue('--cursor-x');
+        const cursorYStr = document.documentElement.style.getPropertyValue('--cursor-y');
+        
+        const cursorX = cursorXStr ? parseFloat(cursorXStr) : -1000;
+        const cursorY = cursorYStr ? parseFloat(cursorYStr) : -1000;
+        
+        // Calculate local element coordinates manually to avoid CSS calc() compatibility issues
         const rect = textRef.current.getBoundingClientRect();
-        textRef.current.style.setProperty('--elem-left', `${rect.left}px`);
-        textRef.current.style.setProperty('--elem-top', `${rect.top}px`);
+        const localX = cursorX - rect.left;
+        const localY = cursorY - rect.top;
+        
+        // Directly apply the computed values
+        textRef.current.style.backgroundImage = `radial-gradient(circle 32px at ${localX}px ${localY}px, #ffffff 32px, #A855F7 34px)`;
       }
+      
+      animationFrameId = requestAnimationFrame(updateGradient);
     };
-    
-    // Initial calculation
-    updateRect();
-    
-    // Delay one frame to ensure layout is completely settled
-    requestAnimationFrame(updateRect);
-    
-    // Recalculate on scroll or resize
-    window.addEventListener("scroll", updateRect, { passive: true });
-    window.addEventListener("resize", updateRect, { passive: true });
-    
+
+    updateGradient();
+
     return () => {
-      window.removeEventListener("scroll", updateRect);
-      window.removeEventListener("resize", updateRect);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -37,8 +42,7 @@ export function MagneticText({ children, className = "" }: { children: React.Rea
       ref={textRef}
       className={`inline-block ${className}`}
       style={{
-        // The gradient coordinates dynamically use the global spring cursor position minus the element's position on screen
-        backgroundImage: `radial-gradient(circle 32px at calc(var(--cursor-x, -1000px) - var(--elem-left, 0px)) calc(var(--cursor-y, -1000px) - var(--elem-top, 0px)), #ffffff 32px, #A855F7 34px)`,
+        backgroundImage: `radial-gradient(circle 32px at -1000px -1000px, #ffffff 32px, #A855F7 34px)`,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         color: "transparent",
